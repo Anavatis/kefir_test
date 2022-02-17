@@ -32,7 +32,6 @@ def get_users_list(user):
 @user_module.route('/users/<pk>', methods=["PATCH"])
 @auth_required
 def update_user_data(user, pk):
-    print(user, pk)
     if int(pk) != user.id_:
         raise ErrorResponseModel(400, "Not access")
 

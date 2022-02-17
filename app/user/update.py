@@ -1,6 +1,6 @@
 from app import db
 from app.error.schemas import ErrorResponseModel
-
+from app.utils import save_to_db
 
 default_access_params = ["first_name", "last_name", "other_name",
                      "email", "phone", "birthday"]
@@ -19,14 +19,11 @@ def update_user_by_dict(user, params):
     for k, v in params.items():
         setattr(user, k, v)
 
-    db.session.add(user)
-    db.session.commit()
-
+    save_to_db(user)
     return user
 
 
 def check_params_access(params, access_params=None):
     if access_params is None: access_params = default_access_params
-    print(params)
     if list(filter(lambda x: x not in access_params, params.keys())):
         raise ErrorResponseModel(400, "non-access params")

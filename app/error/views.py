@@ -25,3 +25,9 @@ def handler_unauth_error(e):
     response.status_code = e.code
     return response
 
+
+@error.app_errorhandler(Exception)
+def handler_unknown_error(e):
+    response = jsonify({"error": "unknown"})
+    response.status_code = 500
+    return response

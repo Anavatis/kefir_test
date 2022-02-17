@@ -1,7 +1,7 @@
 from app import db
 from app.error.schemas import ErrorResponseModel
 from app.user.get import get_query_by_page_and_size
-from app.user.models import User
+from models.user import User
 
 
 def get_users_and_meta(page, size):

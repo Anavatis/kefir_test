@@ -1,7 +1,7 @@
 from app import db
 from app.error.schemas import ErrorResponseModel
-from app.user.models import User
-from app.user.utils import check_int_values_correct
+from models.user import User
+from app.utils import check_int_values_correct
 
 
 def get_users_and_meta(page=0, size=10):

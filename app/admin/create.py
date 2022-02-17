@@ -1,6 +1,7 @@
 from app import db
 from app.error.schemas import ErrorResponseModel
-from app.user.models import User
+from app.utils import save_to_db
+from models.user import User
 
 
 def check_required_params_for_create(json):
@@ -17,7 +18,6 @@ def create_new_user(params):
     user = User(**params)
     user.password = password
 
-    db.session.add(user)
-    db.session.commit()
+    save_to_db(user)
 
     return user
